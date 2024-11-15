@@ -12,6 +12,7 @@ import java.util.List;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -46,5 +47,12 @@ public interface ApiService {
     Call<Void> addVideoToPlaylist(@Header("Authorization") String authHeader, @Path("playlistId") int playlistId, @Body int videoId);
     @GET("Playlist/{playlistId}/videos")
     Call<List<Conteudo>> getVideosByPlaylistId(@Path("playlistId") int playlistId);
+
+    @DELETE("Playlist/{id}")
+    Call<Void> deletePlaylist(@Header("Authorization") String authHeader, @Path("id") int playlistId);
+
+    @DELETE("Playlist/{playlistId}/videos/{conteudoId}")
+    Call<Void> deleteVideoFromPlaylist(@Header("Authorization") String authHeader, @Path("playlistId") int playlistId, @Path("conteudoId") int conteudoId);
+
 
 }

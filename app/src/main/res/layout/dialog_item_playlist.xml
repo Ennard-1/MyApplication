@@ -1,5 +1,4 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -15,24 +14,22 @@
         android:orientation="horizontal"
         android:padding="8dp">
 
+        <ImageView
+            android:id="@+id/thumbnailImageView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:contentDescription="Thumbnail do vídeo" />
+
         <TextView
             android:id="@+id/titleTextView"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
+            android:layout_marginStart="12dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
             android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/delete_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center_vertical"
-            android:background="?attr/selectableItemBackground"
-            android:contentDescription="Deletar playlist"
-            android:src="@android:drawable/ic_menu_delete"
-            app:tint="@android:color/holo_red_dark" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

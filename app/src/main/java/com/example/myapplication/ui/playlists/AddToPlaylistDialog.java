@@ -1,6 +1,5 @@
 package com.example.myapplication.ui.playlists;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,7 +33,7 @@ public class AddToPlaylistDialog extends DialogFragment {
     private Button createPlaylistButton;
     private EditText newPlaylistName;
     private RecyclerView playlistsRecyclerView;
-    private PlaylistsAdapter playlistsAdapter;
+    private DialogPlaylistAdapter dialogPlaylistAdapter;
     private ApiService apiService;
     private int videoId; // Usaremos apenas o videoId
 
@@ -75,11 +73,13 @@ public class AddToPlaylistDialog extends DialogFragment {
                     Log.d("AddToPlaylistDialog", "Playlists fetched successfully: " + response.body());
 
                     // Usando o novo adapter com o listener
-                    playlistsAdapter = new PlaylistsAdapter(response.body(), playlist -> {
-                        addVideoToPlaylist(playlist.getId()); // Chama o método para adicionar o vídeo
+                    dialogPlaylistAdapter = new DialogPlaylistAdapter(response.body(), playlist -> {
+                        Log.d("AddToPlaylistDialog", "Selected playlist ID: " + playlist.getId());
+                        addVideoToPlaylist(playlist.getId());
                     });
 
-                    playlistsRecyclerView.setAdapter(playlistsAdapter);
+
+                    playlistsRecyclerView.setAdapter(dialogPlaylistAdapter);
                 } else {
                     Log.e("AddToPlaylistDialog", "Error fetching playlists: " + response.code() + " - " + response.message());
                     Toast.makeText(getContext(), "Erro ao carregar playlists", Toast.LENGTH_SHORT).show();
@@ -107,19 +107,14 @@ public class AddToPlaylistDialog extends DialogFragment {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    // O vídeo foi adicionado com sucesso à playlist
                     Toast.makeText(getContext(), "Vídeo adicionado à playlist!", Toast.LENGTH_SHORT).show();
-                    dismiss(); // Fecha o diálogo após adicionar o vídeo
+                    dismiss();
                 } else {
-                    // Log detalhado da resposta da API
-                    Log.e("addVideoToPlaylist", "Erro: " + response.code() + " - " + response.message());
-                    if (response.errorBody() != null) {
-                        try {
-                            String errorMessage = response.errorBody().string();
-                            Log.e("addVideoToPlaylist", "Corpo do erro: " + errorMessage);
-                        } catch (IOException e) {
-                            Log.e("addVideoToPlaylist", "Erro ao ler o corpo do erro", e);
-                        }
+                    Log.e("addVideoToPlaylist", "Erro ao adicionar vídeo. Código: " + response.code());
+                    try {
+                        Log.e("addVideoToPlaylist", "Erro detalhado: " + response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                     Toast.makeText(getContext(), "Erro ao adicionar vídeo à playlist", Toast.LENGTH_SHORT).show();
                 }
@@ -127,10 +122,10 @@ public class AddToPlaylistDialog extends DialogFragment {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                // Tratar falha de comunicação
                 Toast.makeText(getContext(), "Falha na comunicação com o servidor", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
 
