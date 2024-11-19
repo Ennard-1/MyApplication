@@ -8,7 +8,7 @@ public class Conteudo {
     private String thumbnail;
     private int usuarioID;
 
-    // Getters e Setters
+    
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

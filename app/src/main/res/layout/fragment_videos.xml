@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         android:clipToPadding="false"
-        android:layout_margin="8dp" /> <!-- Adicione margens aqui -->
+        android:layout_margin="8dp" /> 
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

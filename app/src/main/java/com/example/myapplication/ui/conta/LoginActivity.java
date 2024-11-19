@@ -56,10 +56,10 @@ public class LoginActivity extends AppCompatActivity {
                         String token = response.body().getToken();
                         tokenService.saveToken(token);
 
-                        // Navegar de volta para o ContaFragment (ou uma Activity principal)
+                        
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
-                        finish(); // Finaliza a LoginActivity
+                        finish(); 
                     } else {
                         Toast.makeText(LoginActivity.this, "Login falhou. Verifique suas credenciais.", Toast.LENGTH_SHORT).show();
                     }
@@ -76,6 +76,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean validateCredentials(String email, String password) {
-        return !email.isEmpty() && !password.isEmpty(); // Validação básica
+        return !email.isEmpty() && !password.isEmpty(); 
     }
 }

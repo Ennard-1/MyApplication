@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- Título do Fragmento -->
+  
     <TextView
         android:id="@+id/txtConta"
         android:layout_width="wrap_content"
@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"/>
 
-    <!-- Botão de Login -->
+ 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
@@ -23,15 +23,15 @@
         android:text="Login"
         android:layout_below="@id/txtConta"
         android:layout_marginBottom="16dp"
-        android:visibility="gone"/>  <!-- Inicialmente invisível -->
+        android:visibility="gone"/>  
 
-    <!-- Botão de Registrar -->
+  
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Registrar"
         android:layout_below="@id/btnLogin"
-        android:visibility="gone"/>  <!-- Inicialmente invisível -->
+        android:visibility="gone"/> 
 
 </RelativeLayout>

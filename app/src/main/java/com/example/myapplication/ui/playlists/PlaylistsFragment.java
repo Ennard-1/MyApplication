@@ -63,7 +63,6 @@ public class PlaylistsFragment extends Fragment {
                     adapter = new PlaylistAdapter(
                             playlists,
                             playlist -> {
-                                // Abre a PlaylistActivity com PLAYLIST_ID e PLAYLIST_NAME
                                 Intent intent = new Intent(requireContext(), PlaylistActivity.class);
                                 intent.putExtra("PLAYLIST_ID", playlist.getId());
                                 intent.putExtra("PLAYLIST_NAME", playlist.getNome());

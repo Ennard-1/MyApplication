@@ -6,7 +6,7 @@ public class ItemPlaylist {
     private int conteudoId;
     private Conteudo conteudo;
 
-    // Getters e setters
+  
     public int getPlaylistId() { return playlistId; }
     public void setPlaylistId(int playlistId) { this.playlistId = playlistId; }
 

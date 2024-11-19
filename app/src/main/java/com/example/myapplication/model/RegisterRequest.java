@@ -11,7 +11,7 @@ public class RegisterRequest {
         this.senha = senha;
     }
 
-    // Getters e Setters (se necessário)
+   
     public String getNome() {
         return nome;
     }

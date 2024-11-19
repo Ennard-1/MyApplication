@@ -19,7 +19,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface ApiService {
-    @GET("Conteudo") // Endpoint para pegar todos os conteúdos
+    @GET("Conteudo") 
     Call<List<Conteudo>> getAllConteudos();
 
     @GET("Conteudo/stream/{nomeDoArquivo}")
@@ -34,7 +34,7 @@ public interface ApiService {
     @POST("Auth/login")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
 
-    @POST("Auth/register") // Endpoint para registro
+    @POST("Auth/register") 
     Call<Usuario> register(@Body RegisterRequest registerRequest);
 
     @GET("Playlist")

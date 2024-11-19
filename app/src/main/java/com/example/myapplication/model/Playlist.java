@@ -10,12 +10,10 @@ public class Playlist {
 
     public Playlist(String nome) {
         this.nome = nome;
-        // Defina um valor padrão para usuarioID e conteudoIds, se necessário
-        this.usuarioID = 0; // Você pode ajustar isso mais tarde
-        this.conteudoIds = List.of(); // Inicializa como uma lista vazia
+        this.usuarioID = 0; 
+        this.conteudoIds = List.of(); 
     }
 
-    // Adicione getters e setters conforme necessário
 
     public int getId() {
         return id;

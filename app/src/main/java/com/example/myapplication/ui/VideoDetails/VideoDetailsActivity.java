@@ -26,17 +26,17 @@ public class VideoDetailsActivity extends AppCompatActivity {
         playerView = findViewById(R.id.player_view);
         titleTextView = findViewById(R.id.video_title);
 
-        // Obter dados do Intent
+    
         Intent intent = getIntent();
         String videoUrl = intent.getStringExtra("VIDEO_URL");
         String videoTitle = intent.getStringExtra("VIDEO_TITLE");
         int videoId = getIntent().getIntExtra("VIDEO_ID", -1);
 
 
-        // Configurar o título
+       
         titleTextView.setText(videoTitle);
 
-        // Configurar o ExoPlayer
+     
         player = new ExoPlayer.Builder(this).build();
         playerView.setPlayer(player);
         MediaItem mediaItem = MediaItem.fromUri(videoUrl);
@@ -57,7 +57,6 @@ public class VideoDetailsActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        // Libera os recursos do player quando a atividade é parada
         player.release();
     }
 }

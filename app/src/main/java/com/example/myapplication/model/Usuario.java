@@ -8,7 +8,6 @@ public class Usuario implements Parcelable {
     private String nome;
     private String email;
 
-    // Construtor
     public Usuario(int id, String nome, String email) {
         this.id = id;
         this.nome = nome;
@@ -45,7 +44,6 @@ public class Usuario implements Parcelable {
         dest.writeString(email);
     }
 
-    // Getters
     public int getId() { return id; }
     public String getNome() { return nome; }
     public String getEmail() { return email; }

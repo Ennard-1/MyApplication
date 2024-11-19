@@ -43,13 +43,13 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.VideoViewH
         Conteudo conteudo = conteudos.get(position);
         holder.title.setText(conteudo.getTitulo());
 
-        // Obter o nome da thumbnail
-        String nomeThumbnail = conteudo.getThumbnail(); // Use o atributo correto
+     
+        String nomeThumbnail = conteudo.getThumbnail(); 
 
-        // Construir a URL da thumbnail
+       
         String thumbnailUrl = RetrofitClient.BASE_URL + "Conteudo/thumbnails/" + nomeThumbnail;
 
-        // Usar Picasso para carregar a thumbnail
+    
         Picasso.get()
                 .load(thumbnailUrl)
 

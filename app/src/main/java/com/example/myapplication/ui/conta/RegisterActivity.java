@@ -28,16 +28,16 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // Inicializando os componentes da interface
+        
         edtNome = findViewById(R.id.edtNome);
         edtEmail = findViewById(R.id.edtEmail);
         edtSenha = findViewById(R.id.edtSenha);
         btnRegister = findViewById(R.id.btnRegister);
 
-        // Inicializando o Retrofit
+     
         apiService = RetrofitClient.getClient().create(ApiService.class);
 
-        // Configurando o clique do botão de registro
+        
         btnRegister.setOnClickListener(v -> realizarRegistro());
     }
 
@@ -60,10 +60,10 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,
                             "Registro feito com sucesso!",
                             Toast.LENGTH_SHORT).show();
-                    // Redirecionando para a tela de login
+                   
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
-                    finish(); // Finaliza a RegisterActivity para não retornar a ela
+                    finish();
                 } else {
                     Toast.makeText(RegisterActivity.this,
                             "Erro no registro. Tente novamente.",

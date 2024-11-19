@@ -35,9 +35,9 @@ public class AddToPlaylistDialog extends DialogFragment {
     private RecyclerView playlistsRecyclerView;
     private DialogPlaylistAdapter dialogPlaylistAdapter;
     private ApiService apiService;
-    private int videoId; // Usaremos apenas o videoId
+    private int videoId; 
 
-    public AddToPlaylistDialog(int videoId) { // Construtor recebe apenas videoId
+    public AddToPlaylistDialog(int videoId) { 
         this.videoId = videoId;
     }
 
@@ -72,7 +72,7 @@ public class AddToPlaylistDialog extends DialogFragment {
                 if (response.isSuccessful()) {
                     Log.d("AddToPlaylistDialog", "Playlists fetched successfully: " + response.body());
 
-                    // Usando o novo adapter com o listener
+                    
                     dialogPlaylistAdapter = new DialogPlaylistAdapter(response.body(), playlist -> {
                         Log.d("AddToPlaylistDialog", "Selected playlist ID: " + playlist.getId());
                         addVideoToPlaylist(playlist.getId());
@@ -96,9 +96,8 @@ public class AddToPlaylistDialog extends DialogFragment {
 
     private void addVideoToPlaylist(int playlistId) {
         String token = tokenService.getToken();
-        String authHeader = "Bearer " + token; // Gera o cabeçalho de autorização
+        String authHeader = "Bearer " + token; 
 
-        // Chamada da API para adicionar o vídeo à playlist usando videoId
         Log.e("addVideoToPlaylist: Api call", authHeader);
         Log.e("addVideoToPlaylist: Api call", String.valueOf(playlistId));
         Log.e("addVideoToPlaylist: Api call", String.valueOf(videoId));
@@ -145,7 +144,7 @@ public class AddToPlaylistDialog extends DialogFragment {
             public void onResponse(Call<Playlist> call, Response<Playlist> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getContext(), "Playlist criada com sucesso", Toast.LENGTH_SHORT).show();
-                    dismiss(); // Fecha o diálogo após criar a playlist
+                    dismiss();
                 } else {
                     Toast.makeText(getContext(), "Erro ao criar playlist", Toast.LENGTH_SHORT).show();
                 }

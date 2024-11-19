@@ -27,14 +27,14 @@ public class VideosFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_videos, container, false);
 
-        // Configurando o RecyclerView
+        
         recyclerView = root.findViewById(R.id.recyclerViewVideos);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Inicializando o ViewModel
+     
         videosViewModel = new ViewModelProvider(this).get(VideosViewModel.class);
 
-        // Observando os dados do ViewModel
+      
         videosViewModel.getConteudos().observe(getViewLifecycleOwner(), new Observer<List<Conteudo>>() {
             @Override
             public void onChanged(List<Conteudo> conteudoList) {
@@ -43,7 +43,7 @@ public class VideosFragment extends Fragment {
                     recyclerView.setAdapter(adapter);
                 } else {
                     Log.e("VideosFragment", "Conteúdo vazio ou nulo");
-                    // Você pode também configurar um adaptador vazio ou exibir uma mensagem de erro aqui
+               
                 }
             }
 

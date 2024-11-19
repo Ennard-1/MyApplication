@@ -33,10 +33,10 @@ public class ContaFragment extends Fragment {
         String token = tokenService.getToken();
 
         if (token != null && !token.isEmpty()) {
-            // Se o usuário estiver logado, inicie a ConfiguracoesActivity
+         
             navigateToConfiguracoesActivity();
         } else {
-            // Se não estiver logado, mostre os botões de login e registro
+           
             showAuthButtons(view);
         }
     }
